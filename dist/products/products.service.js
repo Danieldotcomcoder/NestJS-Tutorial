@@ -13,11 +13,14 @@ let ProductsService = class ProductsService {
     constructor() {
         this.products = [];
     }
-    insertProduct(title, description, price) {
+    insertProduct(title, desc, price) {
         const prodId = new Date().toString();
-        const newProduct = new product_module_1.Product(new Date().toString(), title, description, price);
+        const newProduct = new product_module_1.Product(prodId, title, desc, price);
         this.products.push(newProduct);
         return prodId;
+    }
+    getProducts() {
+        return [...this.products];
     }
 };
 ProductsService = __decorate([

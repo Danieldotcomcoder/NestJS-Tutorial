@@ -16,12 +16,15 @@ exports.ProductsController = void 0;
 const common_1 = require("@nestjs/common");
 const products_service_1 = require("./products.service");
 let ProductsController = class ProductsController {
-    constructor(productService) {
-        this.productService = productService;
+    constructor(productsService) {
+        this.productsService = productsService;
     }
     addProduct(prodTitle, prodDesc, prodPrice) {
-        const generatedId = this.productService.insertProduct(prodTitle, prodDesc, prodPrice);
+        const generatedId = this.productsService.insertProduct(prodTitle, prodDesc, prodPrice);
         return { id: generatedId };
+    }
+    getAllProducts() {
+        return this.productsService.getProducts();
     }
 };
 __decorate([
@@ -33,6 +36,12 @@ __decorate([
     __metadata("design:paramtypes", [String, String, Number]),
     __metadata("design:returntype", Object)
 ], ProductsController.prototype, "addProduct", null);
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], ProductsController.prototype, "getAllProducts", null);
 ProductsController = __decorate([
     (0, common_1.Controller)('products'),
     __metadata("design:paramtypes", [products_service_1.ProductsService])

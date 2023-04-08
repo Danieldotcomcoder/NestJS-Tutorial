@@ -1,5 +1,6 @@
 import { Product } from './product.module';
 export declare class ProductsService {
-    products: Product[];
-    insertProduct(title: string, description: string, price: number): string;
+    private products;
+    insertProduct(title: string, desc: string, price: number): string;
+    getProducts(): Product[];
 }
