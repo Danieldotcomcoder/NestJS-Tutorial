@@ -8,7 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductsService = void 0;
 const common_1 = require("@nestjs/common");
+const product_module_1 = require("./product.module");
 let ProductsService = class ProductsService {
+    constructor() {
+        this.products = [];
+    }
+    insertProduct(title, description, price) {
+        const newProduct = new product_module_1.Product(new Date().toString(), title, description, price);
+        this.products.push(newProduct);
+    }
 };
 ProductsService = __decorate([
     (0, common_1.Injectable)()

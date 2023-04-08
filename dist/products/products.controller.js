@@ -11,8 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductsController = void 0;
 const common_1 = require("@nestjs/common");
+const products_service_1 = require("./products.service");
 let ProductsController = class ProductsController {
+    constructor(productService) {
+        this.productService = productService;
+    }
     addProduct() {
+        this.productService.insertProduct();
     }
 };
 __decorate([
@@ -22,7 +27,8 @@ __decorate([
     __metadata("design:returntype", Object)
 ], ProductsController.prototype, "addProduct", null);
 ProductsController = __decorate([
-    (0, common_1.Controller)('products')
+    (0, common_1.Controller)('products'),
+    __metadata("design:paramtypes", [products_service_1.ProductsService])
 ], ProductsController);
 exports.ProductsController = ProductsController;
 //# sourceMappingURL=products.controller.js.map
