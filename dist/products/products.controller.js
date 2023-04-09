@@ -26,6 +26,9 @@ let ProductsController = class ProductsController {
     getAllProducts() {
         return this.productsService.getProducts();
     }
+    getProduct(prodId) {
+        return this.productsService.getSingleProduct(prodId);
+    }
 };
 __decorate([
     (0, common_1.Post)(),
@@ -42,6 +45,13 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "getAllProducts", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], ProductsController.prototype, "getProduct", null);
 ProductsController = __decorate([
     (0, common_1.Controller)('products'),
     __metadata("design:paramtypes", [products_service_1.ProductsService])

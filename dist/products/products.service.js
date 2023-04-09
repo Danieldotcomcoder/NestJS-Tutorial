@@ -14,13 +14,20 @@ let ProductsService = class ProductsService {
         this.products = [];
     }
     insertProduct(title, desc, price) {
-        const prodId = new Date().toString();
+        const prodId = Math.random().toString();
         const newProduct = new product_module_1.Product(prodId, title, desc, price);
         this.products.push(newProduct);
         return prodId;
     }
     getProducts() {
         return [...this.products];
+    }
+    getSingleProduct(productId) {
+        const product = this.products.find((prod) => prod.id === productId);
+        if (!product) {
+            throw new common_1.NotFoundException('Could Not Find Product');
+        }
+        return Object.assign({}, product);
     }
 };
 ProductsService = __decorate([
