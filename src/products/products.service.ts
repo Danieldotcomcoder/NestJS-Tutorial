@@ -6,7 +6,7 @@ export class ProductsService {
   private products: Product[] = [];
 
   insertProduct(title: string, desc: string, price: number) {
-    const prodId = new Date().toString();
+    const prodId = Math.random.toString();
     const newProduct = new Product(prodId, title, desc, price);
     this.products.push(newProduct);
     return prodId;
@@ -19,7 +19,7 @@ export class ProductsService {
   getSingleProduct(productId: string) {
     const product = this.products.find((prod) => prod.id === productId);
     if (!product) {
-      throw new NotFoundException()
+      throw new NotFoundException('Could Not Find Product');
     }
     return { ...product };
   }
